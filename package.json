@@ -1,0 +1,30 @@
+{
+  "name": "vcc-js",
+  "version": "1.0.2",
+  "description": "vcc-js功能集合",
+  "main": "index.js",
+  "directories": {
+    "src": "src"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lonban/js_vcc.git"
+  },
+  "keywords": [
+    "vcc",
+    "longbang",
+    "龙邦"
+  ],
+  "author": {
+    "name": "龙邦",
+    "email": "x135356@sina.com",
+    "url": "https://github.com/antietie"
+  },
+  "dependencies": {
+    "crypto-js": "^3.1.9-1"
+  },
+  "license": "MIT"
+}
