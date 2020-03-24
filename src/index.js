@@ -8,7 +8,7 @@ let Vcc = {
         code = CryptoJS.MD5(code).toString();
         let iv = CryptoJS.enc.Utf8.parse(code.substring(0,16));
         let key = CryptoJS.enc.Utf8.parse(code.substring(16));
-        return CryptoJS.AES.encrypt(string, key, { iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7}).toString();
+        return CryptoJS.AES.encrypt(string.toString(), key, { iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7}).toString();
     },
     decrypt:function(string, code)
     {
@@ -199,6 +199,53 @@ let Vcc = {
     deleteCode:function(name)
     {
         return localStorage.removeItem('vccJS'+name);
+    },
+    /*设置link拼接*/
+    setGet(data)
+    {
+        let get = decodeURIComponent(window.location.search).replace(/\?\?/i,'?');
+        if(get.indexOf('is=1') != -1){
+            return 0;
+        }
+        let str  = '';
+        if(Object.prototype.toString.call(data) == '[object Object]'){
+            for(let k in data){
+                str += '&'+k+'='+data[k];
+            }
+        }else{
+            if(data.indexOf('&') != 0){
+                str = '&'+data;
+            }else{
+                str = data;
+            }
+        }
+        if(str){
+            str = str+'&is=1';//避免重复请求
+            if(!get){
+                str = str.replace(/\&/i,'?');
+            }
+        }else{
+            str = '?is=1';
+        }
+        window.location.search = encodeURIComponent(get+str);
+    },
+    /*获取link拼接*/
+    getGet()
+    {
+        let get = decodeURIComponent(window.location.search).replace(/\?\?/i,'?');
+        let data = [];
+        let data1 = {};
+        if(get){
+            get = get.replace(/\?/i,'');
+            get = get.split('&');
+            for(let i = 0; i < get.length; i++) {
+                data = get[i].split('=');
+                if(data[0]) {
+                    data1[data[0]] = data[1];
+                }
+            }
+        }
+        return data1;
     }
 };
 
