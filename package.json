@@ -1,6 +1,6 @@
 {
   "name": "vcc-js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "vcc-js功能集合",
   "main": "index.js",
   "directories": {

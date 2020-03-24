@@ -147,6 +147,7 @@ let Vcc = {
             return `${Y}年${Mon}月${Day}日  ${H}:${Min}:${S}`
         }
     },
+    /*创建缓存*/
     createCode:function(name,data)
     {
         switch(Object.prototype.toString.call(data)){
@@ -227,10 +228,10 @@ let Vcc = {
         }else{
             str = '?is=1';
         }
-        window.location.search = encodeURIComponent(get+str);
+        window.location.search = get+str;
     },
     /*获取link拼接*/
-    getGet()
+    getGet(key)
     {
         let get = decodeURIComponent(window.location.search).replace(/\?\?/i,'?');
         let data = [];
@@ -245,7 +246,11 @@ let Vcc = {
                 }
             }
         }
-        return data1;
+        if(key){
+            return data1[key];
+        }else{
+            return data1;
+        }
     }
 };
 

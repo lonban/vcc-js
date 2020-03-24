@@ -1,5 +1,5 @@
 'use strict';
 
-const DB = require('./src/index');
+const VCC = require('./src/index');
 
-module.exports = DB;
+module.exports = VCC;
